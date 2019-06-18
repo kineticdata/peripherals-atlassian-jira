@@ -1,0 +1,26 @@
+== Jira_Group_Add_User
+This handler adds a user to an existing group in Jira.
+
+=== Parameters
+[Username]
+  The username of the user that will be added to the group.
+[Group Name]
+  The name of the group that the user will be added to.
+
+=== Results
+No results are returned from this handler
+
+==== Sample Configuration
+Username:                     test.user
+Group Name:                   Test Group 1
+
+
+=== Detailed Description
+This handler uses the Jira Rest API library to add a user to an 
+existing group within Jira. The handler first puts the data that 
+was inputted into the JSON format and then posts that information 
+using a REST call with basic auth. (WARNING: Using this handler 
+without enabling SSL will not be secure). Any errors that occur 
+during the process will be caught and re-raised by this handler. 
+Because there is no return values, if there are no errors raised 
+by the handler the user has been added successfully.

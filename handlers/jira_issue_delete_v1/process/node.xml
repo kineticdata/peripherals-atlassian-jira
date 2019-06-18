@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_issue_delete" name="Jira Issue Delete" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>This handler deletes an issue in Jira.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/jira_issue_delete/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_key" label="Issue Key" required="true"
+            tooltip="The key of the issue that you wish to delete."/>
+    </parameters>
+    <handler name="jira_issue_delete" version="1">
+        <infos>
+            <info name="site">&lt;%= @info['site'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="issue_key">&lt;%= @parameters['issue_key'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml"/>
+</taskDefinition>

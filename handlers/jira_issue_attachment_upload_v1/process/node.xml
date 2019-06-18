@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_issue_attachment_upload" name="Jira Issue Attachment Upload" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>This handler uploads an image to an existing Jira issue.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/jira_issue_attachment_upload/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="attachment_question_menu_label" required="true" label="Attachment Question Menu Label"
+            tooltip="The menu label of the attachment question where the photo will be uploaded to." />
+        <parameter id="issue_key" label="Issue Key" required="true"
+            tooltip="The Key of the issue that the attachment will be added to."/>
+        <parameter id="file_name" label="File Name" required="true"
+            tooltip="The name of the file that will be uploaded to Jira (make sure the extension properly matches the file being sent!)."/>
+    </parameters>
+    <handler name="jira_issue_attachment_upload" version="1">
+        <infos>
+            <info name="site">&lt;%= @info['site'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="remedy_server">&lt;%= @info['remedy_server'] %&gt;</info>
+            <info name="remedy_username">&lt;%= @info['remedy_username'] %&gt;</info>
+            <info name="remedy_password">&lt;%= @info['remedy_password'] %&gt;</info>
+            <info name="remedy_port">&lt;%= @info['remedy_port'] %&gt;</info>
+            <info name="remedy_prognum">&lt;%= @info['remedy_prognum'] %&gt;</info>
+            <info name="remedy_authentication">&lt;%= @info['remedy_authentication'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name='attachment_question_menu_label'>&lt;%= @parameters['attachment_question_menu_label'] %&gt;</parameter>
+            <parameter name="issue_key">&lt;%= @parameters['issue_key'] %&gt;</parameter>
+            <parameter name="file_name">&lt;%= @parameters['file_name'] %&gt;</parameter>
+            <parameter name='customer_survey_instance_id'>&lt;%= @base['CustomerSurveyInstanceId'] %&gt;</parameter>
+            <parameter name='survey_template_instance_id'>&lt;%= @base['surveyTemplateInstanceID'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+    </results>
+</taskDefinition>

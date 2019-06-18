@@ -1,0 +1,54 @@
+== Jira_Issue_Create
+This handler creates a new issue in a Jira project and accepts additional fields that may need to be set.
+
+=== Parameters
+[Error Handling]
+  Determine what to return if an error is encountered.
+[Project Key]
+  The Key of the project that the issue will be added to.
+[Issue Type]
+  The name of the issue type (ie. Bug, New Feature, Task, etc).
+[Summary]
+  A summary of the issue.
+[Description]
+  An in-depth explanation of the issue.
+[Assignee]
+  The username of the person you want to assign this issue to.
+[Priority]
+  The name of the issue priority (ie. Major, Minor, Critical, etc).
+[Due Date]
+  The due date of the issue in the form of YYYY-MM-DD.
+[Addtl Fields JSON]
+  A JSON Map of Additional Fields to be included in the fields wrapper of the body.
+
+=== Sample Configuration
+  Error Handling:          Error Message
+  Project Key:               DEMO
+  Issue Type:                Bug
+  Summary:                   Something is broken
+  Description:               Specifics about the bug
+  Assignee:                  joe.user
+  Priority:                  Major
+  Due Date:                  2014-08-22
+  Addtl Fields JSON:         {'reporter': {'name': 'john.user'}}
+
+
+=== Results
+[Handler Error Message]
+  Error message if an error was encountered and Error Handling is set to "Error Message".
+[id]
+  The id of the issue that was created.
+[key]
+  The key of the issue that was created.
+[url]
+  The url of the issue that was created.
+
+=== Detailed Description
+This handler uses the Jira Rest API library to create an issue
+within a Jira project. The handler first puts the data that was
+inputted into  JSON format and then posts that information
+using a REST call with basic auth. (WARNING: Using this handler
+without enabling SSL will not be secure). The id, key, and url of
+the issue will be returned by the handler. Any errors that occur
+during the process will be caught and re-raised by this handler, or returned
+as an error message if specified.

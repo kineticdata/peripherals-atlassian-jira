@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_user_create" name="Jira User Create" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>This handler creates a new user in Jira.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/jira_user_create/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="username" label="Username" required="true"
+            tooltip="The username for the new user."/>
+        <parameter id="password" label="Password" required="true"
+            tooltip="The password that the new user will use."/>
+        <parameter id="email_address" label="Email Address" required="true"
+            tooltip="The email address for the new user." />
+        <parameter id="display_name" label="Display Name" required="true"
+            tooltip="The display name that will be attached to the new user."/>
+    </parameters>
+    <handler name="jira_user_create" version="1">
+        <infos>
+            <info name="site">&lt;%= @info['site'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="username">&lt;%= @parameters['username'] %&gt;</parameter>
+            <parameter name="password">&lt;%= @parameters['password'] %&gt;</parameter>
+            <parameter name="email_address">&lt;%= @parameters['email_address'] %&gt;</parameter>
+            <parameter name="display_name">&lt;%= @parameters['display_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="key"></result>
+    </results>
+</taskDefinition>

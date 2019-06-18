@@ -1,0 +1,22 @@
+== Jira_Issue_Delete
+This handler deletes an existing issue from Jira.
+
+=== Parameters
+[Issue Key]
+  The key of the issue that you wish to delete.
+
+=== Results
+No results are returned from this handler
+
+==== Sample Configuration
+Issue Key:                       HANDLER-8
+
+=== Detailed Description
+This handler uses the Jira Rest API library to delete an issue in 
+Jira. The handler first puts the data that was inputted into 
+the JSON format and then posts that information using a REST call 
+with basic auth. (WARNING: Using this handler without enabling SSL 
+will not be secure). Any errors that occur during the process will 
+be caught and re-raised by this handler. Because there is no return,
+if there are no errors raised by the handler the issue has been 
+deleted successfully.

@@ -1,0 +1,22 @@
+== Jira_Group_Create
+This handler creates a new group in Jira.
+
+=== Parameters
+[Group Name]
+  The name of the new group.
+
+=== Results
+No results are returned from this handler
+
+==== Sample Configuration
+Group Name:                   Test Group 1
+
+=== Detailed Description
+This handler uses the Jira Rest API library to create a group
+within Jira. The handler first puts the data that was inputted into 
+the JSON format and then posts that information using a REST call 
+with basic auth. (WARNING: Using this handler without enabling SSL 
+will not be secure). Any errors that occur during the process will 
+be caught and re-raised by this handler. Because there is no return,
+if there are no errors raised by the handler the group has been 
+created successfully.

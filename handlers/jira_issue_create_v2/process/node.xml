@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_issue_create" name="Jira Issue Create" schema_version="1.0" version="2">
+  <author>support@kineticdata.com</author>
+  <description>This handler creates a new issue in a Jira project.</description>
+  <helpurl>http://ktc.kineticdata.com/handler/jira_issue_create/1</helpurl>
+  <visible>true</visible>
+  <deferrable>false</deferrable>
+  <parameters>
+    <parameter id="error_handling" label="Error Handling" required="true" tooltip="Determine what to return if an error is encountered." menu="Error Message,Raise Error">Error Message</parameter>
+    <parameter id="project_key" label="Project Key" required="true" tooltip="The Key of the project that the issue will be added to."/>
+    <parameter id="type" label="Issue Type" required="true" tooltip="The name of the issue type (ie. Bug, New Feature, Task, etc)."/>
+    <parameter id="summary" label="Summary" required="true" tooltip="A summary of the issue."/>
+    <parameter id="description" label="Description" required="false" tooltip="An in-depth explanation of the issue."/>
+    <parameter id="assignee" label="Assignee" required="false" tooltip="The username of the person you want to assign this issue to."/>
+    <parameter id="priority" label="Priority" required="false" tooltip="The name of the issue priority (ie. Major, Minor, Critical, etc)."/>
+    <parameter id="due_date" label="Due Date" required="false" tooltip="The due date of the issue in the form of YYYY-MM-DD."/>
+    <parameter id="additional_fields_json" label="Addtl Fields JSON" required="false" tooltip="A JSON Map of Additional Fields to be included in the fields wrapper of the body."/>
+  </parameters>
+  <handler name="jira_issue_create" version="2">
+    <infos>
+      <info name="site">&lt;%= @info['site'] %&gt;</info>
+      <info name="username">&lt;%= @info['username'] %&gt;</info>
+      <info name="password">&lt;%= @info['password'] %&gt;</info>
+      <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+    </infos>
+    <parameters>
+      <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ? @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
+      <parameter name="project_key">&lt;%= @parameters['project_key'] %&gt;</parameter>
+      <parameter name="type">&lt;%= @parameters['type'] %&gt;</parameter>
+      <parameter name="summary">&lt;%= @parameters['summary'] %&gt;</parameter>
+      <parameter name="description">&lt;%= @parameters['description'] %&gt;</parameter>
+      <parameter name="assignee">&lt;%= @parameters['assignee'] %&gt;</parameter>
+      <parameter name="priority">&lt;%= @parameters['priority'] %&gt;</parameter>
+      <parameter name="due_date">&lt;%= @parameters['due_date'] %&gt;</parameter>
+      <parameter name="additional_fields_json">&lt;%= @parameters['additional_fields_json'] %&gt;</parameter>
+    </parameters>
+  </handler>
+  <results format="xml">
+    <result name="Handler Error Message"/>
+    <result name="id"></result>
+    <result name="key"></result>
+    <result name="url"></result>
+  </results>
+</taskDefinition>

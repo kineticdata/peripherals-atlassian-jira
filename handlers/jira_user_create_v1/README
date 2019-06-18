@@ -1,0 +1,31 @@
+== Jira_User_Create
+This handler creates a new user in Jira.
+
+=== Parameters
+[Username]
+  The username for the new user.
+[Password]
+  The password that the new user will use.
+[Email Address]
+  The email address for the new user.
+[Display Name]
+  The display name that will be attached to the new user.
+
+=== Results
+[Key]
+  The key of the issue that was created.
+
+==== Sample Configuration
+Username:                   test.user
+Password:                   testing123
+Email Address:              testing@email.com
+Display Name:               Test User
+
+=== Detailed Description
+This handler uses the Jira Rest API library to create a new user
+in Jira. The handler first puts the data that was inputted into 
+the JSON format and then posts that information using a REST call 
+with basic auth. (WARNING: Using this handler without enabling SSL 
+will not be secure). The key of the newly created user will be 
+returned by the handler. Any errors that occur during the process 
+will be caught and re-raised by this handler.

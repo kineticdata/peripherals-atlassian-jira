@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_group_create" name="Jira Group Create" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>This handler creates a new group in Jira.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/jira_group_create/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="group_name" label="Group Name" required="true"
+            tooltip="The name for the new group."/>
+    </parameters>
+    <handler name="jira_group_create" version="1">
+        <infos>
+            <info name="site">&lt;%= @info['site'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="group_name">&lt;%= @parameters['group_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml"/>
+</taskDefinition>

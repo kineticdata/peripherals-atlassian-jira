@@ -1,0 +1,6 @@
+Jira Issue Create V2 (2018-09-06)
+* Added ability to pass in additional fields as json to set in the issue
+* Added Error Handling so the handler can return an error message vs throw an error
+
+Jira Issue Create V1 (2014-02-17)
+* Initial version.  See README for details.

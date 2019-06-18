@@ -1,0 +1,28 @@
+== Jira_Issue_Attachment_Upload
+  This handler uploads a file to an existing Jira issue.
+
+=== Parameters
+[Attachment Question Menu Label]
+  The menu label of the attachment question where the photo will be uploaded to.
+[Issue Key]
+  The Key of the issue that the attachment will be added to.
+[File Name]
+  The name of the file that will be uploaded to Jira (make sure the extension 
+  properly matches the file being sent!).
+
+=== Results
+  This handler returns no results.
+
+==== Sample Configuration
+Attachment Question Menu Label:        Uploaded File
+Issue Key:                             KT-202
+File Name:                             screenshot.png
+
+=== Detailed Description
+This handler uses the Jira Rest API library to upload a file to an existing Jira
+issue. The handler first faciliates the upload through Remedy, then sends the 
+file to Jira in a REST call, and then finishes by deleting the copy of the file
+from the specified Remedy server (since it the data will have already been sent
+to Jira). WARNING: Using this handler without enabling SSL will not be secure
+within a Jira project. Any errors that occur during the process will be caught 
+and re-raised by this handler.

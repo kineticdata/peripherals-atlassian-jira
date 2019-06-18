@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_issue_retrieve" name="Jira Issue Retrieve" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>This handler retrieves an issue from a Jira project.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/jira_issue_retrieve/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_key" label="Issue Key" required="true"
+            tooltip="The key of the issue you wish to retrieve."/>
+    </parameters>
+    <handler name="jira_issue_retrieve" version="1">
+        <infos>
+            <info name="site">&lt;%= @info['site'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="issue_key">&lt;%= @parameters['issue_key'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name='id'></result>
+        <result name='key'></result>
+        <result name='summary'></result>
+        <result name='description'></result>
+        <result name='creator_name'></result>
+        <result name='creator_emailAddress'></result>
+        <result name='creator_displayName'></result>
+        <result name='project_key'></result>
+        <result name='project_name'></result>
+        <result name='status_name'></result>
+        <result name='issuetype_name'></result>
+    </results>
+</taskDefinition>

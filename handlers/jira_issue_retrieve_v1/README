@@ -1,0 +1,42 @@
+== Jira_Issue_Retrieve
+This handler retrieves an issue from a Jira project.
+
+=== Parameters
+[Issue Key]
+  They key of an issue that you wish to retrieve.
+
+=== Results
+[Id]
+  The id of the issue.
+[Key]
+  The key of the issue.
+[Summary]
+  The summary of the issue.
+[Description]
+  The description of the issue.
+[Creator Name]
+  The username of the issue creator.
+[Creator Email Address]
+  The email address of the issue creator.
+[Creator Display Name]
+  The display name of the issue creator.
+[Project Key]
+  The project key of the issue.
+[Project Name]
+  The project name of the issue.
+[Status Name]
+  The name of the project status.
+[Issue Type Name]
+  The type of the issue.
+
+==== Sample Configuration
+Issue Key:                   KTP-1
+
+=== Detailed Description
+This handler uses the Jira Rest API library to retrieve an issue
+from a Jira project. The handler takes a issue key and and then
+retrieves information about that issue in JSON form. The handler
+then converts that JSON into XML that the handler can return to the 
+task engine. (WARNING: Using this handler without enabling SSL will 
+not be secure). Any errors that occur during the process will be caught 
+and re-raised by this handler.
