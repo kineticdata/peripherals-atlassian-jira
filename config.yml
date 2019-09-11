@@ -1,12 +1,11 @@
 ---
-repo-name: peripherals-jira
+repo-name: peripherals-atlassian-jira
 categories:
 - Project Management
 - Service Management
 - DevOps
 display-name: Jira
-manufacture: Atlassian
+manufacturer: Atlassian
 product: Jira
 description: JIRA Software is built for every member of your software team to plan,
   track, and release great software.
-thumbnail: thumbnail.png
