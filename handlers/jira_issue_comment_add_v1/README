@@ -1,0 +1,32 @@
+== Jira_Issue_Create
+This handler creates a new issue in a Jira project and accepts additional fields that may need to be set.
+
+=== Parameters
+[Error Handling]
+  Determine what to return if an error is encountered.
+[Issue Key]
+  The Key of the issue that the comment will be added to.
+[API Body]
+  JSON structure of the body content of the api call.  {"body":"Comment text here\\nNext Line."}
+
+=== Sample Configuration
+  Error Handling:           Error Message
+  Issue Key:                TDP-2
+  API Body:                 {"body":"Comment here... \\nNew Line"}
+
+
+=== Results
+[Handler Error Message]
+  Error message if an error was encountered and Error Handling is set to "Error Message".
+[id]
+  The id of the comment that was created.
+[url]
+  The url of the comment that was created.
+
+=== Detailed Description
+This handler uses the Jira Rest API library to add a comment on an existing
+issue within a Jira project.  (WARNING: Using this handler
+without enabling SSL will not be secure). The id, and url of
+the comment will be returned by the handler. Any errors that occur
+during the process will be caught and re-raised by this handler, or returned
+as an error message if specified.
