@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <taskInfo version="1.0">
-  <info name="api_username" description="Username"></info>
-  <info name="api_password" description="Password" type="encrypted"></info>
-  <info name="api_location" description="API Location (https://acme.kinops.io/app/api/v1)"></info>
+  <info name="api_username" description="The email address of the user that the token is assocated with"></info>
+  <info name="api_token" description="The api token {create token at https://id.atlassian.com/manage-profile/security/api-tokens}" type="encrypted"></info>
+  <info name="api_location" description="API Location (https://acme..atlassian.net/rest/api/3)"></info>
   <info name="enable_debug_logging" description="True or False">false</info>
 </taskInfo>

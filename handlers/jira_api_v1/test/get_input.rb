@@ -1,14 +1,20 @@
 {
   'info' => {
-    'api_username' => "username",
-    'api_password' => "password",
-    'api_location' => "https://server.com/app/api/v1",
+    'api_username' => "",
+    'api_token' => "",
+    'api_location' => "https://acme.atlassian.net/rest/api/3",
     'enable_debug_logging' => 'true'
   },
   'parameters' => {
-    'error_handling' => 'Error Message',
+    'error_handling' => 'Raise Error',
     'method' => 'POST',
-    'path' => '/users',
-    'body' => '{"username":"joe.blow","email":"joe.blow@kinops.io","displayName":"Joe Blow"}'
+    'path' => '/project',
+    'body' => '{
+      "key": "ER",
+      "projectTypeKey": "software",
+      "description": "Example Project description",
+      "leadAccountId": "",
+      "name": "Example"
+    }'
   }
 }

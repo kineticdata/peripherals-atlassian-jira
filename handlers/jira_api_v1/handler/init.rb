@@ -26,7 +26,7 @@ class JiraApiV1
     @api_location = @info_values["api_location"]
     @api_location.chomp!("/")
     @api_username = @info_values["api_username"]
-    @api_password = @info_values["api_password"]
+    @api_token = @info_values["api_token"]
 
     @body = @parameters["body"].to_s.empty? ? {} : JSON.parse(@parameters["body"])
     @method = (@parameters["method"] || :get).downcase.to_sym
@@ -48,13 +48,17 @@ class JiraApiV1
       puts "API ROUTE: #{@method.to_s.upcase} #{api_route}" if @debug_logging_enabled
       puts "BODY: \n #{@body}" if @debug_logging_enabled
 
+      token = Base64.strict_encode64("#{@api_username}:#{@api_token}")
+
       response = RestClient::Request.execute \
         method: @method, \
         url: api_route, \
-        user: @api_username, \
-        password: @api_password, \
         payload: @body.to_json, \
-        headers: {:content_type => @content_type, :accept => @accept}
+        headers: {
+          "Authorization" => "Basic #{token}",
+          :content_type => @content_type, 
+          :accept => @accept
+        }
       response_code = response.code
     rescue RestClient::Exception => e
       error = nil
@@ -62,9 +66,9 @@ class JiraApiV1
 
       # Attempt to parse the JSON error message.
       begin
+        puts e.response
         error = JSON.parse(e.response)
-        error_message = error["error"]
-        error_key = error["errorKey"] || ""
+        error_message = error["errorMessages"]
       rescue Exception
         puts "There was an error parsing the JSON error response" if @debug_logging_enabled
         error_message = e.inspect

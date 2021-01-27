@@ -1,5 +1,6 @@
 require 'rexml/document'
 require 'json'
+require 'base64'
 
 handler_path = File.expand_path(File.dirname(__FILE__))
 

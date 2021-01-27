@@ -15,7 +15,7 @@
   <handler name="jira_api" version="1">
     <infos>
       <info name="api_username">&lt;%= @info['api_username'] %&gt;</info>
-      <info name="api_password">&lt;%= @info['api_password'] %&gt;</info>
+      <info name="api_token">&lt;%= @info['api_token'] %&gt;</info>
       <info name="api_location">&lt;%= @info['api_location'] %&gt;</info>
       <info name="enable_debug_logging">&lt;%= @info["enable_debug_logging"] %&gt;</info>
     </infos>
