@@ -1,11 +1,11 @@
-== Kinetic Core API V1
-Kinetic Core REST API V1 Client
+== Jira API V1
+Jira REST API V1 Client
 
 === Parameters
 [Error Handling]
   Select between returning an error message, or raising an exception.
 [Method]
-  HTTP Method to use for the Kinetic Core API call being made.
+  HTTP Method to use for the Jira API call being made.
   Options are:
     - GET
     - POST

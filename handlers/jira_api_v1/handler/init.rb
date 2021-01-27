@@ -1,7 +1,7 @@
 # Require the dependencies file to load the vendor libraries
 require File.expand_path(File.join(File.dirname(__FILE__), "dependencies"))
 
-class KineticCoreApiV1
+class JiraApiV1
   # ==== Parameters
   # * +input+ - The String of Xml that was built by evaluating the node.xml handler template.
   def initialize(input)
