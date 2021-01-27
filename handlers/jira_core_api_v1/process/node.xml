@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="kinetic_core_api" name="Kinetic Core API v1" schema_version="1.0" version="1">
+  <author>support@kineticdata.com</author>
+  <description>A generic rest handler.</description>
+  <helpurl></helpurl>
+  <visible>false</visible>
+  <deferrable>false</deferrable>
+  <parameters>
+    <parameter id="error_handling" label="Error Handling" required="true" tooltip="Determine what to return if an error is encountered." menu="Error Message,Raise Error">Error Message</parameter>
+    <parameter id="method" label="Method" required="true" menu="GET,POST,PUT,PATCH,DELETE" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">GET</parameter>
+    <parameter id="path" label="Path" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug"></parameter>
+    <parameter id="body" label="Body" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)"></parameter>
+  </parameters>
+
+  <handler name="kinetic_core_api" version="1">
+    <infos>
+      <info name="api_username">&lt;%= @info['api_username'] %&gt;</info>
+      <info name="api_password">&lt;%= @info['api_password'] %&gt;</info>
+      <info name="api_location">&lt;%= @info['api_location'] %&gt;</info>
+      <info name="enable_debug_logging">&lt;%= @info["enable_debug_logging"] %&gt;</info>
+    </infos>
+    <parameters>
+      <parameter name="error_handling">&lt;%= @parameters["error_handling"] %&gt;</parameter>
+      <parameter name="method">&lt;%= @parameters["method"] %&gt;</parameter>
+      <parameter name="path">&lt;%= @parameters["path"] %&gt;</parameter>
+      <parameter name="body">&lt;%= @parameters["body"] %&gt;</parameter>
+    </parameters>
+  </handler>
+  <results format="xml">
+    <result name="Response Body"/>
+    <result name="Response Code"/>
+    <result name="Handler Error Message"/>
+  </results>
+</taskDefinition>

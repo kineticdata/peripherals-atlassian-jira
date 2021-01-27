@@ -1,0 +1,23 @@
+== Kinetic Core API V1
+Kinetic Core REST API V1 Client
+
+=== Parameters
+[Error Handling]
+  Select between returning an error message, or raising an exception.
+[Method]
+  HTTP Method to use for the Kinetic Core API call being made.
+  Options are:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+[Path]
+  The relative API path (to the `api_location` info value) that will be called.
+  This value should begin with a forward slash `/`.
+[Body]
+  The body content (JSON) that will be sent for POST, PUT, and PATCH requests.
+
+=== Results
+[Response Body]
+  The returned value from the Rest Call (JSON format)
