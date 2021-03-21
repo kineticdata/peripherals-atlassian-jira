@@ -1,0 +1,36 @@
+== Jira_Issue_Attachment_Upload
+  This handler uploads a file to an existing Jira issue.
+
+=== Parameters
+[Attachment Input Type]
+  Choose Field if the input for the attachment info as a Field Name or choose
+  JSON if the input is an attachment's JSON from the Get Attachment Info
+  handler. Note that if Field is specified, the fields entered should only
+  allow one attachment.
+[Attachment Field]
+  The Field Name of an attachment question to retrieve an attachment from.
+[Attachment JSON]
+  The JSON of an attachment object retrieved from the Get Attachment Info handler.
+[Submission ID]
+  The id of the CE submission containing the attachment.
+[Issue Key]
+  The Key of the issue that the attachment will be added to.
+
+
+=== Results
+  This handler returns no results.
+
+==== Sample Configuration
+Attachment Input contentType:          Field
+Attachment Field:                      Attachments
+Submissions ID:                        1232345
+Issue Key:                             KT-202
+
+=== Detailed Description
+This handler uses the Jira Rest API library to upload a file to an existing Jira
+issue. The handler first retrieves the attachment from the Kinetic Platform then
+sends the file to Jira in a REST call.
+
+WARNING: Using this handler without enabling SSL will not be secure
+within a Jira project. Any errors that occur during the process will be caught
+and re-raised by this handler.
