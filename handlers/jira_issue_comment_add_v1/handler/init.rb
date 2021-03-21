@@ -41,15 +41,23 @@ class JiraIssueCommentAddV1
 
     rescue RestClient::ExceptionWithResponse => error
       puts error.inspect if @enable_debug_logging
-      error_response = JSON.parse(error.response)
-      server_errors = !error_response['errorMessages'].empty? ? error_response['errorMessages'].join(' | ') : nil
-      errors = error_response['errors'].map { |k, v| "#{k}: #{v}" }.join(' | ')
-      error_message = "#{error.http_code}: #{server_errors.nil? ? errors : server_errors}"
-      raise error_message if error_handling == 'Raise Error'
+      # Attempt to parse the JSON error message.
+      begin
+        error_response = JSON.parse(error.response)
+        server_errors = !error_response['errorMessages'].empty? ? error_response['errorMessages'].join(' | ') : nil
+        errors = error_response['errors'].map { |k, v| "#{k}: #{v}" }.join(' | ')
+        error_message = "#{error.http_code}: #{server_errors.nil? ? errors : server_errors}"
+        raise error_message if error_handling == 'Raise Error'
+      rescue Exception 
+        puts "There was an error parsing the JSON error response" if @debug_logging_enabled
+        error_message = e.inspect
+        raise error_message if error_handling == 'Raise Error'
+      end
     rescue Exception => error
       error_message = error.inspect
       raise error if error_handling == 'Raise Error'
     end
+
 
     <<-RESULTS
     <results>
