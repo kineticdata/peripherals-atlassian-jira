@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_issue_attachment_upload" name="Jira Issue Attachment Upload" schema_version="1.0" version="2">
+    <author>support@kineticdata.com</author>
+    <description>This handler uploads an image to an existing Jira issue.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="attachment_input_type" label="Attachment Input Type" required="true"
+            tooltip="Choose Field if the input for the attachment info as a Field Name or choose JSON if the input is an attachment's JSON from the Get Attachment Info handler. Note that if Field is specified, the fields entered should only allow one attachment." menu="Field,JSON">Field</parameter>
+        <parameter id="attachment_field" required="false" label="Attachment Field"
+            tooltip="The Field Name of an attachment question to retrieve an attachment from." dependsOnId="attachment_input_type" dependsOnValue="Field"/>
+        <parameter id="attachment_json" required="false" label="Attachment JSON"
+            tooltip="The JSON of an attachment object retrieved from the Get Attachment Info handler." dependsOnId="attachment_input_type" dependsOnValue="JSON"/>
+        <parameter id="submission_id" label="Submission ID" required="true"
+            tooltip="The id of the CE submission containing the attachment."/>
+        <parameter id="issue_key" label="Issue Key" required="true"
+            tooltip="The Key of the issue that the attachment will be added to."/>
+    </parameters>
+    <handler name="jira_issue_attachment_upload" version="2">
+        <infos>
+            <info name="site">&lt;%= @info['site'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="api_location">&lt;%= @info['api_location'] %&gt;</info>
+            <info name="api_username">&lt;%= @info['api_username'] %&gt;</info>
+            <info name="api_password">&lt;%= @info['api_password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name='attachment_input_type'>&lt;%= @parameters['attachment_input_type'] %&gt;</parameter>
+            <parameter name='attachment_field'>&lt;%= @parameters['attachment_field'] %&gt;</parameter>
+            <parameter name='attachment_json'>&lt;%= @parameters['attachment_json'] %&gt;</parameter>
+            <parameter name='submission_id'>&lt;%= @parameters['submission_id'] %&gt;</parameter>
+            <parameter name="issue_key">&lt;%= @parameters['issue_key'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+    </results>
+</taskDefinition>

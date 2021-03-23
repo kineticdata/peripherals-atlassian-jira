@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="jira_issue_comment_add" name="Jira Issue Comment Add" schema_version="1.0" version="1">
+  <author>support@kineticdata.com</author>
+  <description>This handler adds a comment to an existing Jira project issue.</description>
+  <helpurl></helpurl>
+  <visible>true</visible>
+  <deferrable>false</deferrable>
+  <parameters>
+    <parameter id="error_handling" label="Error Handling" required="true" tooltip="Determine what to return if an error is encountered." menu="Error Message,Raise Error">Error Message</parameter>
+    <parameter id="issue_key" label="Issue Key" required="true" tooltip="The Issue Key the comment should be attached to."/>
+    <parameter id="api_body" label="API Body" required="true" tooltip="JSON structure of the body content of the api call."/>
+  </parameters>
+  <handler name="jira_issue_comment_add" version="1">
+    <infos>
+      <info name="site">&lt;%= @info['site'] %&gt;</info>
+      <info name="username">&lt;%= @info['username'] %&gt;</info>
+      <info name="password">&lt;%= @info['password'] %&gt;</info>
+      <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+    </infos>
+    <parameters>
+      <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ? @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
+      <parameter name="issue_key">&lt;%= @parameters['issue_key'] %&gt;</parameter>
+      <parameter name="api_body">&lt;%= @parameters['api_body'] %&gt;</parameter>
+    </parameters>
+  </handler>
+  <results format="xml">
+    <result name="Handler Error Message"/>
+    <result name="id"></result>
+    <result name="url"></result>
+  </results>
+</taskDefinition>
